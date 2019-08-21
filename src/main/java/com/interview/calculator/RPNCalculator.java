@@ -2,6 +2,7 @@ package com.interview.calculator;
 
 
 import com.interview.calculator.exception.InsufficientParameterException;
+import com.interview.calculator.exception.InsufficientStorageException;
 import com.interview.calculator.exception.InvalidExpressionException;
 import com.interview.calculator.exception.UnknownOperatorException;
 import com.interview.calculator.operator.Operators;
@@ -44,6 +45,9 @@ public class RPNCalculator {
         } catch (InsufficientParameterException ex) {
             log.error(String.format("operator %s (position: %d): insufficient parameters",
                     curOp, pos - 1));
+        } catch (InsufficientStorageException ex) {
+            log.error(String.format("operator %s (position: %d): %s",
+                    curOp, pos - 1, ex.getMessage()));
         }
         return status();
     }

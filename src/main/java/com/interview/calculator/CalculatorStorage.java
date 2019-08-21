@@ -2,6 +2,7 @@ package com.interview.calculator;
 
 
 import com.interview.calculator.exception.InsufficientParameterException;
+import com.interview.calculator.exception.InsufficientStorageException;
 import com.interview.calculator.exception.UnknownOperatorException;
 import com.interview.calculator.operator.Operators;
 
@@ -11,6 +12,8 @@ import java.text.DecimalFormat;
 import java.util.Stack;
 
 public class CalculatorStorage {
+
+    private static int MAX_STACK = 1000;
 
     /**
      * stack for operator and operands
@@ -31,6 +34,10 @@ public class CalculatorStorage {
     }
 
     public void store(String op) {
+        if (this.stack.size() >= MAX_STACK) {
+            throw new InsufficientStorageException(
+                    String.format("reach operators and operands max %s limit", 1000));
+        }
         this.stack.push(op);
     }
 
@@ -76,11 +83,11 @@ public class CalculatorStorage {
                 case Operators.SUBSTRACT:
                 case Operators.MULTIPLY:
                 case Operators.DIVIDE :
-                    this.stack.push(this.undo.pop());
-                    this.stack.push(this.undo.pop());
+                    store(this.undo.pop());
+                    store(this.undo.pop());
                     break;
                 case Operators.SQRT :
-                    this.stack.push(this.undo.pop());
+                    store(this.undo.pop());
                     break;
                 default:
             }

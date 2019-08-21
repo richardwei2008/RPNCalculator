@@ -36,9 +36,11 @@ public class RPNCalculator {
             }
             inner.close();
         } catch (InvalidExpressionException ex) {
-            log.error(String.format("expression %s ", nextLine));
-        } catch (UnknownOperatorException ex) {
-            throw ex;
+            log.error(String.format("operator %s (position: %d): invalid expression",
+                    curOp, pos - 1));
+        } catch (ArithmeticException ex) {
+            log.error(String.format("operator %s (position: %d): %s",
+                    curOp, pos - 1, ex.getMessage()));
         } catch (InsufficientParameterException ex) {
             log.error(String.format("operator %s (position: %d): insufficient parameters",
                     curOp, pos - 1));

@@ -58,6 +58,18 @@ public class ArithmeticCalculatorTest {
         Assert.assertEquals(0, new BigDecimal("2").compareTo(res));
     }
 
+    @Test(expected = ArithmeticException.class)
+    public void testDivide_error() {
+        BigDecimal a = new BigDecimal("4");
+        BigDecimal b = new BigDecimal("0");
+        String operator = "/";
+
+        BigDecimal res = new ArithmeticCalculator().calculate(operator, a, b);
+
+        log.info("Result: {}", res);
+        Assert.assertEquals(0, new BigDecimal("2").compareTo(res));
+    }
+
     @Test
     public void testSqrt() {
         BigDecimal a = new BigDecimal("1.44");

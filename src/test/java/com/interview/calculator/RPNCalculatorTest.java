@@ -100,4 +100,12 @@ public class RPNCalculatorTest {
         String stack = calculator.parseExpression(line1);
         Assert.assertEquals("11", stack);
     }
+
+    @Test
+    public void textExample9() {
+        RPNCalculator calculator = new RPNCalculator();
+        String line1 = "2 0 /\n";
+        String stack = calculator.parseExpression(line1);
+        Assert.assertEquals("", stack);
+    }
 }

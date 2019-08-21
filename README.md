@@ -16,8 +16,8 @@
   \W      | Any Non-alphanumeric character
   {m}     | m Repetitions
   {m,n}   | m to n Repetitions
-  *       | Zero or more repetitions
-  +       | One or more repetitions
+  \*       | Zero or more repetitions
+  \+       | One or more repetitions
   ?       | Optional character
   \s      | Any Whitespace
   \S      | Any Non-whitespace character
@@ -25,4 +25,4 @@
   (…)     | Capture Group
   (a(bc)) | Capture Sub-group
   (.*)    | Capture all
-  (ab|cd) | Matches ab or cd
+  (ab\|cd) | Matches ab or cd

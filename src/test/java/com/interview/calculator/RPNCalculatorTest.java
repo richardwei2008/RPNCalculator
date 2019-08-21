@@ -108,4 +108,28 @@ public class RPNCalculatorTest {
         String stack = calculator.parseExpression(line1);
         Assert.assertEquals("", stack);
     }
+
+    @Test
+    public void textExample10() {
+        RPNCalculator calculator = new RPNCalculator();
+        String line1 = "-2 sqrt\n";
+        String stack = calculator.parseExpression(line1);
+        Assert.assertEquals("", stack);
+    }
+
+    @Test
+    public void textExample11() {
+        RPNCalculator calculator = new RPNCalculator();
+        String line1 = "-2.1 1.2 +\n";
+        String stack = calculator.parseExpression(line1);
+        Assert.assertEquals("-0.9", stack);
+    }
+
+    @Test
+    public void textExample12() {
+        RPNCalculator calculator = new RPNCalculator();
+        String line1 = "-2 sqrt\n";
+        String stack = calculator.parseExpression(line1);
+        Assert.assertEquals("", stack);
+    }
 }
